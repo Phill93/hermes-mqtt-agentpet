@@ -455,8 +455,8 @@ def main():
     parser = argparse.ArgumentParser(description="Hermes MQTT Publisher")
     parser.add_argument("--config", default="config.yaml", help="Config file path")
     parser.add_argument("--socket", default="/tmp/hermes-mqtt.sock", help="Unix socket path")
-    parser.add_argument("--broker-host", default="127.0.0.1", help="Override broker host")
-    parser.add_argument("--broker-port", type=int, default=1883, help="Override broker port")
+    parser.add_argument("--broker-host", default=None, help="Override broker host (from config)")
+    parser.add_argument("--broker-port", type=int, default=None, help="Override broker port (from config)")
     args = parser.parse_args()
 
     config = load_config(args.config)
