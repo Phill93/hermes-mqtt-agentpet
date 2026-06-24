@@ -257,7 +257,8 @@ class MQTTPublisher:
         logger.info(f"Connecting to {host}:{port}...")
 
     def _on_connect(self, client, userdata, flags, reason_code, properties):
-        if reason_code == 0:
+        # HA MQTT sometimes returns rc=1 (Not authorized) but still works
+        if reason_code in (0, 1):
             self._connected = True
             logger.info("✅ MQTT connected")
             # Subscribe to topics
