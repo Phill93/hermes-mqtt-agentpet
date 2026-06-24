@@ -2,8 +2,6 @@ broker:
   host: "100.95.26.125"
   port: 1883
   client_id: "hermes-subscriber-catbookone"
-  username: ""
-  password: ""
   keepalive: 60
   qos: 1
   topic_prefix: "hermes"
