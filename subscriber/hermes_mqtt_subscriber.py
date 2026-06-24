@@ -277,7 +277,7 @@ class MQTTPublisher:
                 client.subscribe(topic, qos=1)
                 logger.info(f"Subscribed to {topic}")
         else:
-            logger.warning(f"MQTT connect failed: {reason_code}")
+            logger.debug(f"MQTT connect rc={reason_code}")
 
     def _on_disconnect(self, client, userdata, reason_code, properties):
         self._connected = False

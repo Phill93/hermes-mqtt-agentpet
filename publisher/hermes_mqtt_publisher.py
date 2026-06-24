@@ -247,7 +247,7 @@ class MQTTPublisher:
             threading.Thread(target=self._heartbeat_loop, daemon=True).start()
             threading.Thread(target=self._token_summary_loop, daemon=True).start()
         else:
-            logger.warning(f"MQTT connect failed: {reason_code}")
+            logger.debug(f"MQTT connect rc={reason_code}")
 
     def _on_disconnect(self, client, userdata, reason_code, properties):
         self._connected = False
