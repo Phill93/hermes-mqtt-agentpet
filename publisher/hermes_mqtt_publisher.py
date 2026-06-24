@@ -201,10 +201,11 @@ class MQTTPublisher:
             client_id=broker["client_id"],
             callback_api_version=mqtt.CallbackAPIVersion.VERSION2,
         )
-        self.client.username_pw_set(
-            username=broker.get("username", ""),
-            password=broker.get("password", ""),
-        )
+        if broker.get("username"):
+            self.client.username_pw_set(
+                username=broker.get("username", ""),
+                password=broker.get("password", ""),
+            )
         self.client.on_connect = self._on_connect
         self.client.on_disconnect = self._on_disconnect
         self.client.on_publish = self._on_publish
