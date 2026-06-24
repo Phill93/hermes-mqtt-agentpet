@@ -477,8 +477,11 @@ def main():
     broker_port = args.broker_port or config["broker"]["port"]
     publisher.connect(broker_host, broker_port)
 
-    # Wait for connection
-    time.sleep(2)
+    # Wait for connection (HA MQTT may take longer)
+    for _ in range(10):
+        if publisher._connected:
+            break
+        time.sleep(0.5)
     if not publisher._connected:
         logger.error("❌ Could not connect to MQTT broker")
         sys.exit(1)
