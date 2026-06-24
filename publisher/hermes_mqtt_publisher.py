@@ -248,11 +248,11 @@ class MQTTPublisher:
         else:
             logger.warning(f"MQTT connect failed: {reason_code}")
 
-    def _on_disconnect(self, client, userdata, flags, reason_code, properties):
+    def _on_disconnect(self, client, userdata, reason_code, properties):
         self._connected = False
         logger.info(f"MQTT disconnected (reason: {reason_code})")
 
-    def _on_publish(self, client, userdata, mid):
+    def _on_publish(self, client, userdata, mid, reason_code, properties):
         pass  # Silent publish confirm
 
     def publish(self, topic: str, payload: dict, retain: bool = False):

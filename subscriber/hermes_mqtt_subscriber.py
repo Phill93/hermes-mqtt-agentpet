@@ -278,7 +278,7 @@ class MQTTPublisher:
         else:
             logger.warning(f"MQTT connect failed: {reason_code}")
 
-    def _on_disconnect(self, client, userdata, flags, reason_code, properties):
+    def _on_disconnect(self, client, userdata, reason_code, properties):
         self._connected = False
         logger.info(f"MQTT disconnected (reason: {reason_code})")
         self.state.update_status("offline")
