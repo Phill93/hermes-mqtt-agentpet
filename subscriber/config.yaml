@@ -1,0 +1,19 @@
+broker:
+  host: "127.0.0.1"
+  port: 1883
+  client_id: "hermes-subscriber-catbookone"
+  username: ""
+  password: ""
+  keepalive: 60
+  qos: 1
+  topic_prefix: "hermes"
+
+display:
+  menubar_enabled: true
+  pet_enabled: true
+  update_interval: 1
+  heartbeat_timeout: 90
+
+machine:
+  hostname: "catbookone"
+  monitor_host: "iai-sti111"  # Which Mac Mini to monitor

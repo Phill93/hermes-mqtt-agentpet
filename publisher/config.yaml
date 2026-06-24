@@ -1,0 +1,41 @@
+broker:
+  host: "127.0.0.1"
+  port: 1883
+  client_id: "hermes-publisher-catbookone"
+  username: ""
+  password: ""
+  keepalive: 60
+  clean_session: false
+  qos: 1
+  topic_prefix: "hermes"
+
+machine:
+  hostname: "catbookone"
+  hermes_home: "~/.hermes"
+
+polling:
+  token_interval_seconds: 5
+  cron_interval_seconds: 30
+  heartbeat_interval_seconds: 60
+
+last_will:
+  topic: "hermes/status/catbookone"
+  payload: '{"hostname":"catbookone","status":"offline","timestamp":0}'
+  qos: 1
+  retain: true
+
+hooks:
+  forward:
+    - on_session_start
+    - on_session_end
+    - pre_llm_call
+    - post_llm_call
+    - pre_tool_call
+    - post_tool_call
+    - subagent_start
+    - subagent_stop
+    - api_request_error
+
+commands:
+  subscribe: "hermes/cmd/+/"
+  response_prefix: "hermes/cmd/response"
