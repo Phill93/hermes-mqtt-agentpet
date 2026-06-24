@@ -1,5 +1,5 @@
 broker:
-  host: "127.0.0.1"
+  host: "100.95.26.125"
   port: 1883
   client_id: "hermes-publisher-catbookone"
   username: ""
