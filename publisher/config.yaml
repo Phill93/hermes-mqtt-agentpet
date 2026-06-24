@@ -3,7 +3,7 @@ broker:
   port: 1883
   client_id: "hermes-publisher-catbookone"
   keepalive: 60
-  clean_session: false
+  clean_session: true
   qos: 1
   topic_prefix: "hermes"
 
