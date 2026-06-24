@@ -231,7 +231,7 @@ class MQTTPublisher:
             host,
             port,
             keepalive=broker.get("keepalive", 60),
-            clean_session=broker.get("clean_session", True),
+
         )
         self.client.loop_start()
         logger.info(f"Connecting to {host}:{port}...")
